@@ -1,35 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Http;
+using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
     public class SensorsController : ApiController
     {
-        private double temperature;
-        private int sound;
-        private int light;
+        private readonly List<SensorsData> _db = new List<SensorsData>();
 
-        public void PostTemperature(double value)
-        {
-            temperature = value;
-        }
-
-        public void PostSound(int value)
-        {
-            sound = value;
-        }
-
-        public void PostLight(int value)
-        {
-            light = value;
-        }
+        public void PostData(SensorsData data) => _db.Add(data);
 
         public IHttpActionResult IsOk()
         {
-            return Ok(temperature > 20 && sound < 200 && light < 200);
+            if (!_db.Any()) return BadRequest("Database is empty");
+
+            return Ok(_db.Last().Temperature > 20 && _db.Last().Sound < 200 && _db.Last().Light < 200);
         }
     }
 }
