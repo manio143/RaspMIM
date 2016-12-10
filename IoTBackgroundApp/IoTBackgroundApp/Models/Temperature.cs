@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GrovePi;
+using GrovePi.Sensors;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,13 +10,23 @@ namespace IoTBackgroundApp.Models
 {
     class Temperature
     {
+        static IDHTTemperatureAndHumiditySensor sensor = DeviceFactory.Build
+            .DHTTemperatureAndHumiditySensor(Pin.DigitalPin7, DHTModel.Dht11);
         public static double Current
         {
             get
             {
-                return GrovePi.DeviceFactory.Build
-                    .TemperatureAndHumiditySensor(GrovePi.Pin.AnalogPin2, GrovePi.Sensors.Model.Dht11)
-                    .TemperatureInCelsius();
+                sensor.Measure();
+                return sensor.TemperatureInCelsius;
+            }
+        }
+
+        public static double Humidity
+        {
+            get
+            {
+                sensor.Measure();
+                return sensor.Humidity;
             }
         }
     }
