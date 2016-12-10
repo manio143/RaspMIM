@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:p1="http://schemas.android.com/apk/res/android"
+    p1:minWidth="25px"
+    p1:minHeight="25px"
+    p1:layout_width="match_parent"
+    p1:layout_height="match_parent"
+    p1:id="@+id/TableLayout">
+    <TableRow
+        p1:id="@+id/TableRow">
+        <TextView
+            p1:text="Temperature:"
+            p1:textAppearance="?android:attr/textAppearanceLarge"
+            p1:layout_column="0"
+            p1:id="@+id/TemperatureView" />
+        <TextView
+            p1:textAppearance="?android:attr/textAppearanceLarge"
+            p1:layout_column="1"
+            p1:id="@+id/TemperatureValue" />
+    </TableRow>
+    <TableRow
+        p1:id="@+id/tableRow2">
+        <TextView
+            p1:text="Sound:"
+            p1:textAppearance="?android:attr/textAppearanceLarge"
+            p1:layout_column="0"
+            p1:id="@+id/SoundText" />
+        <TextView
+            p1:textAppearance="?android:attr/textAppearanceLarge"
+            p1:layout_column="1"
+            p1:id="@+id/SoundValue" />
+    </TableRow>
+    <TableRow
+        p1:id="@+id/tableRow3">
+        <TextView
+            p1:text="Light:"
+            p1:textAppearance="?android:attr/textAppearanceLarge"
+            p1:layout_column="0"
+            p1:id="@+id/LightText" />
+      <TextView
+            p1:textAppearance="?android:attr/textAppearanceLarge"
+            p1:layout_column="1"
+            p1:id="@+id/LightValue" />
+    </TableRow>
+</TableLayout>

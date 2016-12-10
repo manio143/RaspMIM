@@ -17,5 +17,14 @@ namespace WebAPI.Controllers
 
             return Ok(_db.Last().Temperature > 20 && _db.Last().Sound < 200 && _db.Last().Light < 200);
         }
+
+        public IHttpActionResult GetLastData()
+        {
+            if (!_db.Any()) return BadRequest("Database is empty");
+
+            return Ok(_db.Last());
+        }
+
+        public IHttpActionResult GetAllData() => Ok(_db);
     }
 }
