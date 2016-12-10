@@ -12,7 +12,7 @@ namespace IoTBackgroundApp.Models
         {
             get
             {
-                return GrovePi.DeviceFactory.Build.LightSensor(GrovePi.Pin.DigitalPin8).SensorValue();
+                return GrovePi.DeviceFactory.Build.LightSensor(GrovePi.Pin.AnalogPin1).SensorValue();
             }
         }
     }
