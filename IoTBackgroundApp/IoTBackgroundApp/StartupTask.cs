@@ -16,15 +16,22 @@ namespace IoTBackgroundApp
         public void Run(IBackgroundTaskInstance taskInstance)
         {
             deferral = taskInstance.GetDeferral();
+            SetBackground(128, 128, 128);
+            //DeviceFactory.Build.Led(Pin.DigitalPin2).ChangeState(GrovePi.Sensors.SensorStatus.On);
             for (int i = 0; i < 500; i++)
             {
-                SetLedOn(Pin.DigitalPin5);
-                Task.Delay(500).Wait();
-                SetLedOff(Pin.DigitalPin5);
+                double temp = Temperature.Current;
+                double humid = Temperature.Humidity;
+                int sound = Sound.Current;
+                int light = Light.Current;
 
-                System.Diagnostics.Debug.WriteLine(Temperature.Current);
-                SetText($"T: {Temperature.Current:0.0}  S: {Sound.Current}\nH: {Temperature.Humidity}   L: {Light.Current}");
-                SetBackground(128, 128, 128);
+                if (temp > 25 || humid > 45)
+                    SetLedOn(Pin.DigitalPin2);
+                else
+                    SetLedOff(Pin.DigitalPin2);
+
+                //System.Diagnostics.Debug.WriteLine(Temperature.Current);
+                SetText($"T: {temp:0.0}  S: {sound}\nH: {humid}    L: {light}");
 
             }
             deferral.Complete();
