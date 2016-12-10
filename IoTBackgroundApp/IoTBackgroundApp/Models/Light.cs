@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IoTBackgroundApp
+namespace IoTBackgroundApp.Models
 {
     class Light
     {
@@ -12,7 +12,7 @@ namespace IoTBackgroundApp
         {
             get
             {
-                return GrovePi.DeviceFactory.Build.LightSensor(GrovePi.Pin.DigitalPin3).SensorValue();
+                return GrovePi.DeviceFactory.Build.LightSensor(GrovePi.Pin.DigitalPin8).SensorValue();
             }
         }
     }

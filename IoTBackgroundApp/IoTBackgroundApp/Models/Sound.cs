@@ -12,7 +12,7 @@ namespace IoTBackgroundApp.Models
         {
             get
             {
-                return GrovePi.DeviceFactory.Build.SoundSensor(GrovePi.Pin.DigitalPin8).SensorValue();
+                return GrovePi.DeviceFactory.Build.SoundSensor(GrovePi.Pin.DigitalPin7).SensorValue();
             }
         }
     }

@@ -13,7 +13,7 @@ namespace IoTBackgroundApp.Models
             get
             {
                 return GrovePi.DeviceFactory.Build
-                    .TemperatureAndHumiditySensor(GrovePi.Pin.DigitalPin7, GrovePi.Sensors.Model.Dht11)
+                    .TemperatureAndHumiditySensor(GrovePi.Pin.DigitalPin2, GrovePi.Sensors.Model.Dht11)
                     .TemperatureInCelsius();
             }
         }

@@ -96,7 +96,7 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Light.cs" />
+    <Compile Include="Models\Light.cs" />
     <Compile Include="Models\Sound.cs" />
     <Compile Include="Models\Temperature.cs" />
     <Compile Include="StartupTask.cs" />
