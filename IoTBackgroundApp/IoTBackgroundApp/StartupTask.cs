@@ -18,6 +18,9 @@ namespace IoTBackgroundApp
             DeviceFactory.Build.Led(Pin.DigitalPin2).ChangeState(GrovePi.Sensors.SensorStatus.On);
             Task.Delay(3000).Wait();
             DeviceFactory.Build.Led(Pin.DigitalPin2).ChangeState(GrovePi.Sensors.SensorStatus.Off);
+
+            DeviceFactory.Build.RgbLcdDisplay().SetText("Hello World!");
+            DeviceFactory.Build.RgbLcdDisplay().SetBacklightRgb(128, 128, 128);
             deferral.Complete();
         }
     }
