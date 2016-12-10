@@ -3,12 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Net.Http;
 using Windows.ApplicationModel.Background;
+using System.Threading.Tasks;
 
-namespace IoTApp
+namespace IoTBackgroundApp
 {
-    class StartupTask : IBackgroundTask
+    public sealed class StartupTask : IBackgroundTask
     {
         private BackgroundTaskDeferral deferral;
         public void Run(IBackgroundTaskInstance taskInstance)
