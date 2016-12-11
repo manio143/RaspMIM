@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IoTBackgroundApp.Models
 {
-    public class SensorsData
+    public sealed class SensorsData
     {
         public double Temperature { get; set; }
         public int Sound { get; set; }

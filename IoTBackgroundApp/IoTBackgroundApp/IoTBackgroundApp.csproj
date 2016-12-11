@@ -97,6 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Light.cs" />
+    <Compile Include="Models\SensorData.cs" />
     <Compile Include="Models\Sound.cs" />
     <Compile Include="Models\Temperature.cs" />
     <Compile Include="StartupTask.cs" />

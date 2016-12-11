@@ -12,6 +12,7 @@ namespace IoTBackgroundApp
 {
     public sealed class StartupTask : IBackgroundTask
     {
+        const string Server = "http://raspmim.azurewebsites.net/";
         private BackgroundTaskDeferral deferral;
         public void Run(IBackgroundTaskInstance taskInstance)
         {
@@ -23,15 +24,42 @@ namespace IoTBackgroundApp
                 double temp = Temperature.Current;
                 double humid = Temperature.Humidity;
                 int sound = Sound.Current;
-                int light = Light.Current;
+                int light = 0;// Light.Current;
 
-                if (temp > 25 || humid > 45)
+                float volts = sound * 5 / 1024;
+
+                if (sound > 520)
                     SetLedOn(Pin.DigitalPin2);
                 else
                     SetLedOff(Pin.DigitalPin2);
 
-                //System.Diagnostics.Debug.WriteLine(Temperature.Current);
-                SetText($"T: {temp:0.0}  S: {sound}\nH: {humid}    L: {light}");
+                using (var client = new HttpClient())
+                {
+                    var content = new FormUrlEncodedContent(new[]
+                    {
+                        new KeyValuePair<string, string>("temperature", temp.ToString()),
+                        new KeyValuePair<string, string>("sound", sound.ToString()),
+                        new KeyValuePair<string, string>("light", light.ToString()),
+                        new KeyValuePair<string, string>("humidity", humid.ToString())
+                    });
+                    client.PostAsync(Server + "api/data", content).Wait();
+                    var result = client.GetAsync(Server + "api/ok").Result;
+                    if (result.IsSuccessStatusCode)
+                    {
+                        var resultMessage = result.Content.ReadAsStringAsync().Result;
+                        if (resultMessage == "false")
+                            SetText("Nie sprzyjające warunki");
+                        else
+                            SetText("Fajnie jest!");
+                    }
+                    else
+                    {
+                        SetText("Error occured.");
+                    }
+                }
+
+                System.Diagnostics.Debug.WriteLine(sound);
+                //SetText($"T: {temp:0.0}  S: {sound}\nH: {humid}    L: {light}");
 
             }
             deferral.Complete();

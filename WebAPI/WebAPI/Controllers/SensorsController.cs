@@ -18,11 +18,12 @@ namespace WebAPI.Controllers
         }
 
         [Route("ok")]
+        [HttpGet]
         public IHttpActionResult IsOk()
         {
             if (!_db.Any()) return BadRequest("Database is empty");
-
-            return Ok(_db.Last().Temperature > 20 && _db.Last().Sound < 200 && _db.Last().Light < 200);
+            var latest = _db.Last();
+            return Ok(latest.Temperature > 20 && latest.Humidity < 45);
         }
 
         [Route("data")]
