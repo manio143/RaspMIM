@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using WebAPI.Models;
@@ -36,5 +37,16 @@ namespace WebAPI.Controllers
 
         [Route("dataAll")]
         public IHttpActionResult GetAllData() => Ok(_db);
+
+        [Route("dataAll/{begin},{end}")]
+        public IHttpActionResult GetAllData(DateTime begin, DateTime end)
+        {
+            if (!_db.Any()) return BadRequest("Database is empty");
+
+            return Ok(
+                from data in _db
+                where data.Date >= begin && data.Date <= end
+                select data);
+        }
     }
 }

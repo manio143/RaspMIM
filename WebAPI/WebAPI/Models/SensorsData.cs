@@ -6,7 +6,7 @@ using System.Web;
 
 namespace WebAPI.Models
 {
-    [DataContractAttribute]
+    [DataContract]
     public struct SensorsData
     {
         [DataMember]
@@ -17,6 +17,8 @@ namespace WebAPI.Models
         public int Light { get; set; }
         [DataMember]
         public double Humidity { get; set; }
+        [DataMember]
+        public DateTime Date { get; set; }
 
         public SensorsData(double temperature, int sound, int light, double humidity)
         {
@@ -24,6 +26,7 @@ namespace WebAPI.Models
             Sound = sound;
             Light = light;
             Humidity = humidity;
+            Date = DateTime.Today;
         }
     }
 }
