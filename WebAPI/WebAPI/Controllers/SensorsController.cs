@@ -14,6 +14,7 @@ namespace WebAPI.Controllers
         [Route("data")]
         public IHttpActionResult PostData(SensorsData data)
         {
+            data.Date = DateTime.Today;
             _db.Add(data);
             return Created("api/data", data);
         }
