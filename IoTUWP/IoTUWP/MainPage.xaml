@@ -8,23 +8,37 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="130"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
-                <TextBlock>Temperature: </TextBlock>
+                <TextBlock>Temperature:</TextBlock>
                 <TextBlock x:Name="tbTemperature"></TextBlock>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock>Sound: </TextBlock>
+                <TextBlock>Sound:</TextBlock>
                 <TextBlock x:Name="tbSound"></TextBlock>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock>Light: </TextBlock>
+                <TextBlock>Light:</TextBlock>
                 <TextBlock x:Name="tbLight"></TextBlock>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock>Humidity:</TextBlock>
                 <TextBlock x:Name="tbHumidity"></TextBlock>
             </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="btnPlot" Content="Plot" Click="btnPlot_Click"></Button>
+                <ComboBox x:Name="cmbPlotField" Margin="20, 0, 0, 0" Width="200">
+                    <ComboBoxItem x:Name="optT" IsSelected="True">Temperature</ComboBoxItem>
+                    <ComboBoxItem x:Name="optS">Sound</ComboBoxItem>
+                    <ComboBoxItem x:Name="optL">Light</ComboBoxItem>
+                    <ComboBoxItem x:Name="optH">Humidity</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
         </StackPanel>
+        <WebView x:Name="pltView" Grid.Row="1" Visibility="Visible"/>
     </Grid>
 </Page>
