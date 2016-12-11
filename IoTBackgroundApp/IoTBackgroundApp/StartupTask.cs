@@ -19,19 +19,24 @@ namespace IoTBackgroundApp
             deferral = taskInstance.GetDeferral();
             SetBackground(128, 128, 128);
             //DeviceFactory.Build.Led(Pin.DigitalPin2).ChangeState(GrovePi.Sensors.SensorStatus.On);
-            for (int i = 0; i < 500; i++)
+            for (; ;)
             {
                 double temp = Temperature.Current;
                 double humid = Temperature.Humidity;
                 int sound = Sound.Current;
-                int light = 0;// Light.Current;
+                int light = Light.Current;
 
                 float volts = sound * 5 / 1024;
 
-                if (sound > 520)
+                if (sound > 110 || humid > 45)
+                {
                     SetLedOn(Pin.DigitalPin2);
+                    DeviceFactory.Build.Buzzer(Pin.DigitalPin3).ChangeState(GrovePi.Sensors.SensorStatus.On);
+                }
                 else
+                {
                     SetLedOff(Pin.DigitalPin2);
+                }
 
                 using (var client = new HttpClient())
                 {
@@ -58,9 +63,10 @@ namespace IoTBackgroundApp
                     }
                 }
 
-                System.Diagnostics.Debug.WriteLine(sound);
+                //System.Diagnostics.Debug.WriteLine(sound);
                 //SetText($"T: {temp:0.0}  S: {sound}\nH: {humid}    L: {light}");
 
+                    DeviceFactory.Build.Buzzer(Pin.DigitalPin3).ChangeState(GrovePi.Sensors.SensorStatus.Off);
             }
             deferral.Complete();
         }
