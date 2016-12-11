@@ -2,6 +2,64 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:id="@+id/PlotLayout">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:id="@+id/LinearLayout1">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="100dp"
+            android:layout_height="300dp">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/BeginText"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="20dp" 
+                android:maxWidth="40dp"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/EndText"
+                android:layout_marginRight="33dp"
+                android:layout_marginBottom="19dp" 
+                android:maxWidth="40dp"/>
+        </LinearLayout>
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/Spinner"
+            android:entries="@+array/Sensors" />
+        <Button
+            android:id="@+id/Accept"
+            android:text="Accept"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+    </LinearLayout> 
+    <LinearLayout
+      android:id="@+id/Lipa"
+      android:layout_height="match_parent"
+      android:layout_width="match_parent" />
+      
+    <!--
+    <barchart.BarChartView
+        android:layout_gravity="center"
+        android:id="@+id/BarChart"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        min_value="5"
+        max_value="8"
+        bar_width="40"
+        bar_offset="2"
+        bar_color="#FF0000"
+        bar_caption_fontSize="30"
+        bar_caption_innerColor="#000000"
+        bar_caption_outerColor="#FFFFFF" />-->
 </LinearLayout>

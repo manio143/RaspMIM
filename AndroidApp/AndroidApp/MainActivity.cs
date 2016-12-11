@@ -1,9 +1,5 @@
 ﻿using System;
-using System.IO;
-using System.Linq;
 using System.Net.Http;
-using System.Xml.Linq;
-using System.Xml.Serialization;
 using Android.App;
 using Android.Content.PM;
 using Android.Widget;
@@ -26,6 +22,11 @@ namespace AndroidApp
             SetContentView (Resource.Layout.Main);
 
             FindViewById<Button>(Resource.Id.Check).Click += CheckClick;
+
+            FindViewById<Button>(Resource.Id.Plot).Click += delegate
+            {
+                StartActivity(typeof(PlotActivity));
+            };
         }
 
         private void CheckClick(object sender, EventArgs e)
@@ -41,10 +42,6 @@ namespace AndroidApp
                     dialog.Show();
                     return;
                 }
-                /*
-                XmlSerializer serializer = new XmlSerializer(typeof(SensorsData));
-                var reader = new StreamReader(response.Content.ReadAsStreamAsync().Result);
-                */
 
                 var data = JsonConvert.DeserializeObject<SensorsData>(response.Content.ReadAsStringAsync().Result);
 
@@ -53,8 +50,6 @@ namespace AndroidApp
                 FindViewById<TextView>(Resource.Id.LightValue).Text = data.Light.ToString();
                 FindViewById<TextView>(Resource.Id.HumidityValue).Text = data.Humidity.ToString("##.###");
                 
-                //var data = JsonConvert.DeserializeObject<SensorsData>(response.Content.ReadAsStringAsync().Result);
-
             }
         }
     }
