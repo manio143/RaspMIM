@@ -12,7 +12,7 @@ using Newtonsoft.Json;
 
 namespace AndroidApp
 {
-    [Activity(Label = "AndroidApp", MainLauncher = true, Icon = "@drawable/icon", 
+    [Activity(Label = "AndroidApp", MainLauncher = true, Icon = "@drawable/iot", 
         ConfigurationChanges = ConfigChanges.KeyboardHidden | ConfigChanges.Orientation | ConfigChanges.ScreenSize)]
     public class MainActivity : Activity
     {
