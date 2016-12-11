@@ -2,4 +2,10 @@
 <resources>
     <string name="Hello">Hello World, Click Me!</string>
     <string name="ApplicationName">AndroidApp</string>
+    <string-array name="Sensors">
+        <item>Temperature</item>
+        <item>Sound</item>
+        <item>Light</item>
+        <item>Humidity</item>
+    </string-array>
 </resources>
