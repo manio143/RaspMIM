@@ -5,12 +5,19 @@ using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
+    [RoutePrefix("api")]
     public class SensorsController : ApiController
     {
-        private readonly List<SensorsData> _db = new List<SensorsData>();
+        private static readonly List<SensorsData> _db = new List<SensorsData>();
 
-        public void PostData(SensorsData data) => _db.Add(data);
+        [Route("data")]
+        public IHttpActionResult PostData(SensorsData data)
+        {
+            _db.Add(data);
+            return Created("api/data", data);
+        }
 
+        [Route("ok")]
         public IHttpActionResult IsOk()
         {
             if (!_db.Any()) return BadRequest("Database is empty");
@@ -18,6 +25,7 @@ namespace WebAPI.Controllers
             return Ok(_db.Last().Temperature > 20 && _db.Last().Sound < 200 && _db.Last().Light < 200);
         }
 
+        [Route("data")]
         public IHttpActionResult GetLastData()
         {
             if (!_db.Any()) return BadRequest("Database is empty");
@@ -25,6 +33,7 @@ namespace WebAPI.Controllers
             return Ok(_db.Last());
         }
 
+        [Route("dataAll")]
         public IHttpActionResult GetAllData() => Ok(_db);
     }
 }
