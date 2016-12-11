@@ -14,6 +14,8 @@ namespace WebAPI.Controllers
         [Route("data")]
         public IHttpActionResult PostData(SensorsData data)
         {
+            if (data.Temperature == Double.NaN || data.Humidity == Double.NaN)
+                return Ok();
             data.Date = DateTime.Today;
             _db.Add(data);
             return Created("api/data", data);
