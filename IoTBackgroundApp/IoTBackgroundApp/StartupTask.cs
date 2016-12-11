@@ -65,9 +65,14 @@ namespace IoTBackgroundApp
             deferral.Complete();
         }
 
+        string text;
         void SetText(string text)
         {
-            DeviceFactory.Build.RgbLcdDisplay().SetText(text);
+            if (text != this.text)
+            {
+                DeviceFactory.Build.RgbLcdDisplay().SetText(text);
+                this.text = text;
+            }
         }
 
         void SetBackground(byte red, byte green, byte blue)

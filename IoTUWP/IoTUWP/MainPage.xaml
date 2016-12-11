@@ -1,0 +1,30 @@
+﻿<Page
+    x:Class="IoTUWP.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:IoTUWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock>Temperature: </TextBlock>
+                <TextBlock x:Name="tbTemperature"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock>Sound: </TextBlock>
+                <TextBlock x:Name="tbSound"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock>Light: </TextBlock>
+                <TextBlock x:Name="tbLight"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock>Humidity:</TextBlock>
+                <TextBlock x:Name="tbHumidity"></TextBlock>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
