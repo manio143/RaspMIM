@@ -4,15 +4,16 @@
     p1:minHeight="25px"
     p1:layout_width="match_parent"
     p1:layout_height="match_parent"
-    p1:id="@+id/TableLayout">
+    p1:id="@+id/tableLayout">
     <TableRow
-        p1:id="@+id/TableRow">
+        p1:id="@+id/tableRow1">
         <TextView
-            p1:text="Temperature:"
+            p1:text="Temperature: "
             p1:textAppearance="?android:attr/textAppearanceLarge"
             p1:layout_column="0"
-            p1:id="@+id/TemperatureView" />
+            p1:id="@+id/TemperatureText" />
         <TextView
+            p1:text=""
             p1:textAppearance="?android:attr/textAppearanceLarge"
             p1:layout_column="1"
             p1:id="@+id/TemperatureValue" />
@@ -20,11 +21,12 @@
     <TableRow
         p1:id="@+id/tableRow2">
         <TextView
-            p1:text="Sound:"
+            p1:text="Sound: "
             p1:textAppearance="?android:attr/textAppearanceLarge"
             p1:layout_column="0"
             p1:id="@+id/SoundText" />
         <TextView
+            p1:text=""
             p1:textAppearance="?android:attr/textAppearanceLarge"
             p1:layout_column="1"
             p1:id="@+id/SoundValue" />
@@ -32,13 +34,38 @@
     <TableRow
         p1:id="@+id/tableRow3">
         <TextView
-            p1:text="Light:"
+            p1:text="Light: "
             p1:textAppearance="?android:attr/textAppearanceLarge"
             p1:layout_column="0"
             p1:id="@+id/LightText" />
-      <TextView
+        <TextView
+            p1:text=""
             p1:textAppearance="?android:attr/textAppearanceLarge"
             p1:layout_column="1"
             p1:id="@+id/LightValue" />
+    </TableRow>
+    <TableRow
+        p1:id="@+id/tableRow4">
+        <TextView
+            p1:text="Humidity: "
+            p1:textAppearance="?android:attr/textAppearanceLarge"
+            p1:layout_column="0"
+            p1:id="@+id/HumidityText" />
+        <TextView
+            p1:text=""
+            p1:textAppearance="?android:attr/textAppearanceLarge"
+            p1:layout_column="1"
+            p1:id="@+id/HumidityValue" />
+    </TableRow>
+    <TableRow
+        p1:id="@+id/tableRow3">
+        <Button
+            p1:layout_column="0"
+            p1:id="@+id/Check"
+            p1:text="Check" />
+        <Button
+            p1:layout_column="1"
+            p1:id="@+id/Plot" 
+            p1:text="Show plot" />
     </TableRow>
 </TableLayout>
